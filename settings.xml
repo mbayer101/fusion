@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<settings>
+  <run_mode>fixed source</run_mode>
+  <particles>50000</particles>
+  <batches>50</batches>
+  <source type="independent" strength="1.0" particle="neutron">
+    <space type="cylindrical" origin="0.0 0.0 0.0">
+      <r type="uniform" parameters="40.0 90.0"/>
+      <phi type="uniform" parameters="0.0 6.283185307179586"/>
+      <z type="uniform" parameters="-30.0 30.0"/>
+    </space>
+    <angle type="isotropic"/>
+    <energy type="discrete">
+      <parameters>14100000.0 1.0</parameters>
+    </energy>
+  </source>
+  <output>
+    <summary>false</summary>
+  </output>
+  <weight_windows_generator>
+    <mesh>1</mesh>
+    <particle_type>neutron</particle_type>
+    <max_realizations>4</max_realizations>
+    <update_interval>2</update_interval>
+    <on_the_fly>true</on_the_fly>
+    <method>magic</method>
+  </weight_windows_generator>
+  <mesh id="1" type="cylindrical">
+    <r_grid>30.0 37.083333333333336 44.166666666666664 51.25 58.33333333333333 65.41666666666666 72.5 79.58333333333333 86.66666666666666 93.75 100.83333333333333 107.91666666666666 115.0 122.08333333333333 129.16666666666666 136.25 143.33333333333331 150.41666666666666 157.5 164.58333333333331 171.66666666666666 178.75 185.83333333333331 192.91666666666666 200.0</r_grid>
+    <phi_grid>0.0 0.8975979010256552 1.7951958020513104 2.6927937030769655 3.5903916041026207 4.487989505128276 5.385587406153931 6.283185307179586</phi_grid>
+    <z_grid>-80.0 -73.33333333333333 -66.66666666666667 -60.0 -53.33333333333333 -46.666666666666664 -40.0 -33.33333333333333 -26.666666666666664 -20.0 -13.333333333333329 -6.666666666666657 0.0 6.666666666666671 13.333333333333343 20.0 26.66666666666667 33.33333333333334 40.0 46.66666666666667 53.33333333333334 60.0 66.66666666666669 73.33333333333334 80.0</z_grid>
+    <origin>0.0 0.0 0.0</origin>
+  </mesh>
+</settings>

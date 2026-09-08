@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<cross_sections>
+  <library materials="H2" path="FENDL-3.1d_H2.h5" type="neutron"/>
+  <library materials="Pb206" path="FENDL-3.1d_Pb206.h5" type="neutron"/>
+  <library materials="Pb204" path="FENDL-3.1d_Pb204.h5" type="neutron"/>
+  <library materials="W186" path="FENDL-3.1d_W186.h5" type="neutron"/>
+  <library materials="W184" path="FENDL-3.1d_W184.h5" type="neutron"/>
+  <library materials="W183" path="FENDL-3.1d_W183.h5" type="neutron"/>
+  <library materials="W182" path="FENDL-3.1d_W182.h5" type="neutron"/>
+  <library materials="W180" path="FENDL-3.1d_W180.h5" type="neutron"/>
+  <library materials="Ta181" path="FENDL-3.1d_Ta181.h5" type="neutron"/>
+  <library materials="Fe58" path="FENDL-3.1d_Fe58.h5" type="neutron"/>
+  <library materials="Fe57" path="FENDL-3.1d_Fe57.h5" type="neutron"/>
+  <library materials="Fe56" path="FENDL-3.1d_Fe56.h5" type="neutron"/>
+  <library materials="Fe54" path="FENDL-3.1d_Fe54.h5" type="neutron"/>
+  <library materials="Cr54" path="FENDL-3.1d_Cr54.h5" type="neutron"/>
+  <library materials="Cr53" path="FENDL-3.1d_Cr53.h5" type="neutron"/>
+  <library materials="Cr52" path="FENDL-3.1d_Cr52.h5" type="neutron"/>
+  <library materials="Cr50" path="FENDL-3.1d_Cr50.h5" type="neutron"/>
+  <library materials="V51" path="FENDL-3.1d_V51.h5" type="neutron"/>
+  <library materials="V50" path="FENDL-3.1d_V50.h5" type="neutron"/>
+  <library materials="Li7" path="FENDL-3.1d_Li7.h5" type="neutron"/>
+  <library materials="Li6" path="FENDL-3.1d_Li6.h5" type="neutron"/>
+  <library materials="H3" path="FENDL-3.1d_H3.h5" type="neutron"/>
+  <library materials="Pb207" path="FENDL-3.1d_Pb207.h5" type="neutron"/>
+  <library materials="Pb208" path="FENDL-3.1d_Pb208.h5" type="neutron"/>
+</cross_sections>

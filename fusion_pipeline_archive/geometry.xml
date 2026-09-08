@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<geometry>
+  <cell id="10000" fill="1" region="10000 -10001 10002 -10003 10004 -10005" universe="2"/>
+  <dagmc_universe id="1" filename="/root/full_reactor.h5m"/>
+  <surface id="10000" type="x-plane" boundary="vacuum" coeffs="-170.0"/>
+  <surface id="10001" type="x-plane" boundary="vacuum" coeffs="170.0"/>
+  <surface id="10002" type="y-plane" boundary="vacuum" coeffs="-170.0"/>
+  <surface id="10003" type="y-plane" boundary="vacuum" coeffs="170.0"/>
+  <surface id="10004" type="z-plane" boundary="vacuum" coeffs="-150.0"/>
+  <surface id="10005" type="z-plane" boundary="vacuum" coeffs="140.0"/>
+</geometry>

@@ -1,0 +1,33 @@
+/*----------------*- C++ -*------------------*=| =========                 |                 |
+| \      /  F ield         | OpenFOAM: The Open Source CFD Toolbox |
+|  \    /   O peration     | Website:  openfoam.org          |
+|   \  /    A nd           | Version:  v2312 / custom        |
+|    \/     M anipulation  |                 |
+\*------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system/solid";
+    object      fvOptions;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+nuclearHeating
+{
+    type            scalarTransport;
+    active          true;
+    
+    scalarTransportCoeffs
+    {
+        field           h; // Enthalpy field in solid structural regions
+        explicitSource  table;
+        
+        // Direct ingestion of OpenMC converted power density mapping
+        table
+        (
+#include "openfoam_heat_source.dat"
+        );
+    }
+}

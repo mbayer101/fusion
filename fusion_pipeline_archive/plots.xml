@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<plots>
+  <plot id="1" filename="torus_xz_slice" color_by="material" type="slice" basis="xz">
+    <pixels>800 800</pixels>
+    <origin>600.0 0.0 0.0</origin>
+    <width>1000.0 1000.0</width>
+  </plot>
+</plots>
