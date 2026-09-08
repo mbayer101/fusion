@@ -1,0 +1,8 @@
+miniforge3/
+.cache/
+*.sh
+*.vtk
+*.h5
+build/
+output/
+__pycache__/
