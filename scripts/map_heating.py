@@ -21,14 +21,16 @@ with openmc.StatePoint(latest_sp) as sp:
     joules_per_ev = 1.60218e-19
     heating_watts_per_cm3 = heating_data * joules_per_ev * (fusion_power_watts / 14.1e6)
     
-    # Reshape to match the 50x50x50 grid dimensions
+    # Flatten and reshape reliably to match the 50x50x50 grid dimensions
     grid_shape = (50, 50, 50)
-    if heating_watts_per_cm3.size == np.prod(grid_shape):
-        heating_3d = heating_watts_per_cm3.reshape(grid_shape)
+    flat_data = heating_watts_per_cm3.flatten()
+    
+    if flat_data.size == np.prod(grid_shape):
+        heating_3d = flat_data.reshape(grid_shape)
     else:
-        heating_3d = heating_watts_per_cm3.squeeze()
+        raise ValueError(f"Data size {flat_data.size} does not match target grid product {np.prod(grid_shape)}")
         
-    print(f"Reshaped heating data grid shape: {heating_3d.shape}")
+    print(f"Successfully reshaped heating data grid shape: {heating_3d.shape}")
     
     # Ensure OpenFOAM constant directory exists and export
     os.makedirs('openfoam/constant', exist_ok=True)
