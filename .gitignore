@@ -6,3 +6,6 @@ miniforge3/
 build/
 output/
 __pycache__/
+
+# Generated plots and visualization images
+*.png
