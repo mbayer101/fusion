@@ -10,28 +10,11 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    location    "system";
-    object      fvOptions;
+    location    "constant";
+    object      transportProperties;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-nuclearHeating
-{
-    type            scalarSemiImplicitSource;
-    active          true;
+transportModel  Newtonian;
 
-    scalarSemiImplicitSourceCoeffs
-    {
-        selectionMode   all;
-        volumeMode      specific;
-        
-        sources
-        {
-            T
-            {
-                explicit    1.0;
-                implicit    0.0;
-            }
-        }
-    }
-}
+DT              dt [ 0 2 -1 0 0 0 0 ] 1.5e-5; // Thermal diffusivity (m^2/s)

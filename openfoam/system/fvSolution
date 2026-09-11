@@ -11,27 +11,29 @@ FoamFile
     format      ascii;
     class       dictionary;
     location    "system";
-    object      fvOptions;
+    object      fvSolution;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-nuclearHeating
+solvers
 {
-    type            scalarSemiImplicitSource;
-    active          true;
-
-    scalarSemiImplicitSourceCoeffs
+    T
     {
-        selectionMode   all;
-        volumeMode      specific;
-        
-        sources
-        {
-            T
-            {
-                explicit    1.0;
-                implicit    0.0;
-            }
-        }
+        solver          PCG;
+        preconditioner  DIC;
+        tolerance       1e-06;
+        relTol          0.01;
+    }
+}
+
+relaxationFactors
+{
+    fields
+    {
+        T               1;
+    }
+    equations
+    {
+        T               1;
     }
 }

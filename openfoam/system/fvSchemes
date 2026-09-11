@@ -11,27 +11,36 @@ FoamFile
     format      ascii;
     class       dictionary;
     location    "system";
-    object      fvOptions;
+    object      fvSchemes;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-nuclearHeating
+ddtSchemes
 {
-    type            scalarSemiImplicitSource;
-    active          true;
+    default         steadyState;
+}
 
-    scalarSemiImplicitSourceCoeffs
-    {
-        selectionMode   all;
-        volumeMode      specific;
-        
-        sources
-        {
-            T
-            {
-                explicit    1.0;
-                implicit    0.0;
-            }
-        }
-    }
+gradSchemes
+{
+    default         Gauss linear;
+}
+
+divSchemes
+{
+    default         none;
+}
+
+laplacianSchemes
+{
+    default         Gauss linear corrected;
+}
+
+interpolationSchemes
+{
+    default         linear;
+}
+
+snGradSchemes
+{
+    default         corrected;
 }
