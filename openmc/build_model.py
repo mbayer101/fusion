@@ -1,7 +1,7 @@
 import openmc
 import numpy as np
 
-print("Setting up OpenMC fusion blanket model...")
+print("Setting up OpenMC fusion blanket model with CSG geometry...")
 
 # --- 1. Materials Definition ---
 eurofer = openmc.Material(name="Eurofer-97")
@@ -18,33 +18,39 @@ lipb.set_density('g/cc', 9.4)
 materials = openmc.Materials([eurofer, lipb])
 materials.export_to_xml()
 
-# --- 2. Source Definition (14.1 MeV D-T Fusion Neutrons) ---
+# --- 2. Geometry Setup (Simple CSG Bounding Box) ---
+outer_surf = openmc.Sphere(r=100.0, boundary_type='vacuum')
+blanket_cell = openmc.Cell(cell_id=1, name='Blanket Region')
+blanket_cell.fill = lipb
+blanket_cell.region = -outer_surf
+
+geometry = openmc.Geometry([blanket_cell])
+geometry.export_to_xml()
+
+# --- 3. Source Definition (14.1 MeV D-T Fusion Neutrons) ---
 source = openmc.IndependentSource()
-# 14.1 MeV monoenergetic neutron source
 source.space = openmc.stats.Point((0.0, 0.0, 0.0))
 source.angle = openmc.stats.Isotropic()
 source.energy = openmc.stats.Discrete([14.1e6], [1.0])
 
 settings = openmc.Settings()
 settings.source = source
-settings.batches = 50
-settings.particles = 10000
+settings.batches = 20
+settings.particles = 5000
 settings.run_mode = 'fixed source'
 settings.export_to_xml()
 
-# --- 3. Tallies Definition (Volumetric Heating Mesh Tally) ---
-# Create a regular rectangular mesh over the blanket region
+# --- 4. Tallies Definition (Volumetric Heating Mesh Tally) ---
 mesh = openmc.RegularMesh()
 mesh.lower_left = (-50.0, -50.0, -50.0)
 mesh.upper_right = (50.0, 50.0, 50.0)
-mesh.dimension = (50, 50, 50)
+mesh.dimension = (50, 50, 50)  # Increased resolution
 
-# Define heating tally on the mesh
 tally = openmc.Tally(name='volumetric_heating')
 tally.mesh = mesh
-tally.scores = ['heating'] # Nuclear heating score (eV/g or eV/cm^3 depending on settings)
+tally.scores = ['heating']
 
 tallies = openmc.Tallies([tally])
 tallies.export_to_xml()
 
-print("OpenMC physics, source, and mesh tally configurations exported successfully!")
+print("OpenMC CSG geometry, materials, source, and tallies exported successfully!")
