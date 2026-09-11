@@ -44,13 +44,16 @@ settings.export_to_xml()
 mesh = openmc.RegularMesh()
 mesh.lower_left = (-50.0, -50.0, -50.0)
 mesh.upper_right = (50.0, 50.0, 50.0)
-mesh.dimension = (50, 50, 50)  # Increased resolution
+mesh.dimension = (50, 50, 50)
+
+# Explicitly create and assign the mesh filter
+mesh_filter = openmc.MeshFilter(mesh)
 
 tally = openmc.Tally(name='volumetric_heating')
-tally.mesh = mesh
+tally.filters = [mesh_filter]
 tally.scores = ['heating']
 
 tallies = openmc.Tallies([tally])
 tallies.export_to_xml()
 
-print("OpenMC CSG geometry, materials, source, and tallies exported successfully!")
+print("OpenMC CSG geometry, materials, source, and 50x50x50 mesh tallies exported successfully!")
