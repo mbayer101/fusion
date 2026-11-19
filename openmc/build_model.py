@@ -66,10 +66,11 @@ settings.particles = 10000
 settings.run_mode = 'fixed source'
 
 # --- 4. Spherical Mesh & MAGIC Weight Windows ---
-mesh = openmc.SphericalMesh()
-mesh.r_grid = [30.0, 32.0, 40.0, 50.0, 65.0, 75.0, 85.0, 95.0, 120.0]
-mesh.theta_grid = [0.0, np.pi]
-mesh.phi_grid = [0.0, 2.0 * np.pi]
+mesh = openmc.SphericalMesh(
+    r_grid=[30.0, 32.0, 40.0, 50.0, 65.0, 75.0, 85.0, 95.0, 120.0],
+    theta_grid=[0.0, np.pi],
+    phi_grid=[0.0, 2.0 * np.pi]
+)
 
 wwg = openmc.WeightWindowGenerator(
     method='magic',
