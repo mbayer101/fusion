@@ -7,7 +7,6 @@ tungsten = openmc.Material(name="Tungsten_First_Wall")
 tungsten.add_element('W', 1.0, 'wo')
 tungsten.set_density('g/cc', 19.3)
 
-# Outward-graded Stage 2 Uranium loading (7 wt% -> 14 wt% -> 24 wt%) to flatten volumetric power density
 grade_specs = [(0.07, 10.31), (0.14, 10.47), (0.24, 10.70)]
 lbe_zones = []
 for idx, (u_tot, rho) in enumerate(grade_specs):
