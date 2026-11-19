@@ -1,4 +1,4 @@
-/*--------------------------------*- C++ -*------------------*--- C++ ---**\
+/*--------------------------------*- C++ -*------------------*--- C++ ---*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
 |  \\    /   O peration     | Version:  v2412                                 |
@@ -24,13 +24,36 @@ nuclearHeating
     {
         selectionMode   all;
         volumeMode      specific;
-        
+
         sources
         {
             T
             {
+                // Net volumetric thermal source balanced with LBE convective removal
                 explicit    1.0;
                 implicit    0.0;
+            }
+        }
+    }
+}
+
+lbeConvectiveCooling
+{
+    type            scalarSemiImplicitSource;
+    active          true;
+
+    scalarSemiImplicitSourceCoeffs
+    {
+        selectionMode   all;
+        volumeMode      specific;
+
+        sources
+        {
+            T
+            {
+                // Stable convective cooling sink: Su = +0.0723 K/s, Sp = -0.0001 s^-1
+                explicit    0.072315;
+                implicit   -0.0001;
             }
         }
     }
