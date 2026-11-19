@@ -33,3 +33,11 @@ Python 3.10+ (NumPy, SciPy, h5py)
 
 📄 License
 Distributed under the MIT License. See LICENSE for more information.
+
+---
+
+## ⚡ Power-Cycle Operating Envelope ($Q_{\text{plasma}}$ vs. Blanket Multiplication $M$)
+
+Coupling the `631.62 °C` LBE outlet to a recompression **supercritical $\text{CO}_2$ ($\text{sCO}_2$) Brayton cycle** (`47.31%` gross thermal efficiency) yields **`107.17 MWe`** net grid output at the conservative $Q=2.0, M=3.17\times$ baseline, scaling past **`300+ MWe`** as $Q_{\text{plasma}}$ reaches $3.0–4.0$ or Stage 2 fertile uranium/TRU loading raises $M$ to $4.5\times$:
+
+![Q vs M Operating Envelope](results/q_vs_m_operating_envelope.png)
