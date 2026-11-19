@@ -2,39 +2,44 @@ import openmc
 import numpy as np
 import os
 
-print("Starting OpenMC-to-OpenFOAM heating data mapper...")
+print("=== STARTING RADIAL OPENMC-TO-OPENFOAM HEATING MAPPER ===")
 
-statepoint_files = [f for f in os.listdir('.') if f.startswith('statepoint.') and f.endswith('.h5')]
-if not statepoint_files:
-    print("No statepoint file found. Run OpenMC simulation first to generate tally data.")
-    exit(1)
+# 1. Load latest statepoint
+sp = openmc.StatePoint('statepoint.25.h5')
+heat_tally = sp.get_tally(name='volumetric_heating')
+tbr_tally = sp.get_tally(name='tritium_breeding')
 
-latest_sp = max(statepoint_files, key=os.path.getmtime)
-print(f"Reading latest statepoint: {latest_sp}")
+# Radial shell boundaries (cm) matching openmc/build_model.py
+r_bins = np.array([30.0, 32.0, 40.0, 50.0, 65.0, 75.0, 85.0, 95.0, 120.0])
+shell_volumes_cm3 = (4.0 / 3.0) * np.pi * (r_bins[1:]**3 - r_bins[:-1]**3)
 
-with openmc.StatePoint(latest_sp) as sp:
-    tally = sp.get_tally(name='volumetric_heating')
-    heating_data = tally.get_values(scores=['heating'])
-    
-    # Unit conversion from eV/source-particle to W/cm^3 (assuming 1 MW fusion power scaling)
-    fusion_power_watts = 1e6 
-    joules_per_ev = 1.60218e-19
-    heating_watts_per_cm3 = heating_data * joules_per_ev * (fusion_power_watts / 14.1e6)
-    
-    # Flatten and reshape reliably to match the 50x50x50 grid dimensions
-    grid_shape = (50, 50, 50)
-    flat_data = heating_watts_per_cm3.flatten()
-    
-    if flat_data.size == np.prod(grid_shape):
-        heating_3d = flat_data.reshape(grid_shape)
-    else:
-        raise ValueError(f"Data size {flat_data.size} does not match target grid product {np.prod(grid_shape)}")
-        
-    print(f"Successfully reshaped heating data grid shape: {heating_3d.shape}")
-    
-    # Ensure OpenFOAM constant directory exists and export
-    os.makedirs('openfoam/constant', exist_ok=True)
-    output_path = 'openfoam/constant/heatSource'
-    np.savetxt(output_path, heating_3d.flatten(), header="// OpenFOAM 50x50x50 volumetric heat source (W/cm^3)", comments="")
-    print(f"Exported heating source term to {output_path}")
+# Tally mean is in eV / source particle per spherical shell
+heating_eV_per_n = heat_tally.mean.flatten()
+heating_eV_cm3_per_n = heating_eV_per_n / shell_volumes_cm3
 
+# 2. Normalize to 500 MW Fusion Power
+fusion_power_W = 500e6
+joules_per_MeV = 1.602176634e-13
+eV_to_J = 1.602176634e-19
+source_rate_n_s = fusion_power_W / (17.6 * joules_per_MeV)
+
+# Convert to W/m^3 per radial shell
+shell_power_density_W_m3 = heating_eV_cm3_per_n * source_rate_n_s * eV_to_J * 1e6
+
+print(f"TBR: {tbr_tally.mean.sum():.4f} +/- {tbr_tally.std_dev.sum():.4f}")
+print(f"Total Thermal Power (with M={heating_eV_per_n.sum()/14.1e6:.2f}x): {(heating_eV_per_n.sum() * eV_to_J * source_rate_n_s)/1e6:.2f} MW")
+
+# 3. Map radial power densities onto a 25x25x25 grid (-50 to +50 cm) matching OpenFOAM blockMesh
+coords = np.linspace(-48.0, 48.0, 25)
+X, Y, Z = np.meshgrid(coords, coords, coords, indexing='ij')
+R = np.sqrt(X**2 + Y**2 + Z**2)
+
+grid_W_m3 = np.zeros_like(R)
+for i in range(len(shell_power_density_W_m3)):
+    mask = (R >= r_bins[i]) & (R < r_bins[i+1])
+    grid_W_m3[mask] = shell_power_density_W_m3[i]
+
+os.makedirs('openfoam/constant', exist_ok=True)
+np.savetxt('openfoam/constant/heatSource', grid_W_m3.flatten(), header='Radial Volumetric Heat Source (W/m3)', comments='# ')
+print(f"Peak Mapped Power Density: {np.max(grid_W_m3):.3e} W/m^3")
+print("Exported mapped radial heating source to openfoam/constant/heatSource")
