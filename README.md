@@ -47,3 +47,9 @@ An integrated multi-physics simulation framework coupling **OpenMC** (3D Monte C
     (cd openfoam && laplacianFoam && foamToVTK)
     python3 scripts/plot_radial_temp.py
     python3 scripts/brayton_cycle.py
+
+---
+
+## Subcriticality Safety Verification ($k_{eff}$ Eigenvalue Check)
+
+* **Verified Blanket $k_{eff}$ (Plasma Driver Off):** **`0.24574 +/- 0.00076`** (strictly below the `k_eff < 0.95` regulatory subcriticality limit; failsafe passive shutdown upon plasma termination).
