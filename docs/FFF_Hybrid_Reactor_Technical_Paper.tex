@@ -64,6 +64,21 @@ Inside a $12\text{ T}$ toroidal magnetic field ($\mathrm{Ha} = 22,927$), bare Eu
 
 Coupling the 3D OpenMC nuclear heating field ($3,608.2\text{ W/kg}$) into OpenFOAM's \texttt{chtMultiRegionSimpleFoam} solver with $k\text{-}\omega\text{ SST}$ turbulence and \texttt{alphatJayatillekeWallFunction} yields a mean bulk LBE temperature of $452.15^\circ\text{C}$ ($488.38^\circ\text{C}$ maximum) and a peak Tungsten plasma-facing temperature of $891.81^\circ\text{C}$, preserving a $+308.19^\circ\text{C}$ margin below Tungsten recrystallization ($1,200^\circ\text{C}$) and $+161.62^\circ\text{C}$ below Eurofer97 creep ($650^\circ\text{C}$).
 
+
+\begin{figure*}[t!]
+\centering
+\includegraphics[width=0.96\textwidth]{docs/figures/fig1_3d_cht_thermal_profile.png}
+\caption{3D multi-region turbulent conjugate heat transfer (\texttt{chtMultiRegionSimpleFoam}, $k\text{-}\omega\text{ SST}$) results showing (a) axial temperature profiles across the Tungsten plasma-facing wall ($891.81^\circ\text{C}$ peak) and fluid LBE coolant ($452.15^\circ\text{C}$ mean) and (b) radial-axial thermal boundary layer development.}
+\label{fig:cht}
+\end{figure*}
+
+\begin{figure*}[t!]
+\centering
+\includegraphics[width=0.96\textwidth]{docs/figures/fig2_actinide_skimming_keff.png}
+\caption{Five-year coupled OpenMC depletion analysis showing (a) closed-batch $k_{\text{eff}}$ exceedance after $2.0\text{ FPY}$ versus continuous $65\%/\text{yr}$ online pyrochemical plutonium skimming ($k_{\text{eff}} \le 0.65165 < 0.95$) and (b) Zone 3 $^{239}\text{Pu}$ and $^{240}\text{Pu}$ equilibrium trajectories.}
+\label{fig:depletion}
+\end{figure*}
+
 \section{Conclusion}
 The validated F-F-F hybrid architecture demonstrates that a driven $Q_{\text{plasma}} = 2.0$ tokamak coupled to a graded U-LBE/FliBe blanket achieves $>430\text{ MW}_{\text{e}}$ net commercial output, full 3D tritium self-sufficiency ($\mathrm{TBR} = 1.1009$), passive subcritical safety ($k_{\text{eff}} < 0.66$), and thermally compliant 3D turbulent heat removal. All simulation scripts, CAD/DAGMC models, and ParaView VTK datasets are archived at \url{https://github.com/mbayer101/fusion}.
 
