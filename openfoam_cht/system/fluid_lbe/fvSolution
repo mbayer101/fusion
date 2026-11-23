@@ -1,6 +1,6 @@
 FoamFile
 {
-    version 2.0; format ascii; class dictionary; location "system"; object fvSolution;
+    version 2.0; format ascii; class dictionary; location "system/fluid_lbe"; object fvSolution;
 }
 solvers
 {
@@ -11,17 +11,10 @@ solvers
         tolerance       1e-7;
         relTol          0.01;
     }
-    U
+    "(U|h)"
     {
         solver          PBiCGStab;
         preconditioner  DILU;
-        tolerance       1e-7;
-        relTol          0.1;
-    }
-    "(h|T)"
-    {
-        solver          PCG;
-        preconditioner  DIC;
         tolerance       1e-7;
         relTol          0.1;
     }
@@ -36,5 +29,5 @@ SIMPLE
 relaxationFactors
 {
     fields      { p_rgh 0.3; rho 1.0; }
-    equations   { U 0.7; h 0.5; T 0.8; }
+    equations   { U 0.7; h 0.5; }
 }
