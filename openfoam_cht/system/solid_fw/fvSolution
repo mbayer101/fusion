@@ -14,7 +14,7 @@ solvers
     "(U|h|T)"
     {
         solver          PBiCGStab;
-        preconditioner  DILU;
+        preconditioner  DIC;
         tolerance       1e-7;
         relTol          0.1;
     }
