@@ -62,7 +62,7 @@ An integrated multi-physics simulation framework coupling **OpenMC** (3D Monte C
   - **3D Blanket Multiplication ($M$):** **`5.52x`** (`77.90 MeV/n`) with **`0.38%`** total leakage (`1.87x` outboard/inboard Shafranov-shift wall-loading asymmetry).
 - **Track B — 5-Year Coupled Depletion & First-Wall Radiation Damage (`500 MW` D-T Driver):**
   - **First-Wall Damage (3D Toroidal `2.60 MW/m^2` NWL):** **`29.9 DPA/FPY`** (`98.8 appm He/FPY`), supporting a 5-year Tungsten monoblock replacement cycle (`~150 DPA`).
-  - **5-Year End-of-Cycle Blanket $k_{eff}$:** **`1.69403`** (remains strictly subcritical `< 0.95` across full 5-year irradiation).
+  - **Actinide Transmutation & Subcriticality Control:** `15.9%` of Zone 3 $^{238}\text{U}$ transmutes over 5 FPY; closed-batch operation remains strictly subcritical up to **2.0 FPY ($k_{eff} = 0.906 < 0.95$)**, requiring annual/continuous online LBE actinide skimming to hold $k_{eff} \in [0.25, 0.65]$ over the full 5-year cycle.
 - **Track C — Multi-Region CHT Fluid Loop & $\text{SiC}_f/\text{SiC}$ Flow Channel Inserts (`12 T` Field):**
   - **MHD Pressure Drop Reduction:** **`97.1%`** (`67.86 MPa` bare Eurofer97 $\rightarrow$ **`2.00 MPa`** with $\text{SiC}_f/\text{SiC}$ inserts; **`22.95 MWe`** total pumping power at `9.20 m^3/s`).
   - **Coupled Thermal Limits:** LBE outlet **`595.14 C`**, Eurofer97/LBE interface **`646.92 C`** (`< 650 C` creep limit), Tungsten plasma-facing surface **`899.10 C`** (`< 1,200 C` recrystallization limit).
