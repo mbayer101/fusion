@@ -12,7 +12,7 @@ geometry = openmc.Geometry.from_xml("geometry.xml", materials=materials)
 settings = openmc.Settings.from_xml("settings.xml")
 settings.batches = 12
 settings.particles = 5000
-settings.weight_window_generators = None
+settings.weight_window_generators.clear()
 
 shell_radii = {
     "Fission_LBE_Zone1": (38.0, 46.0),

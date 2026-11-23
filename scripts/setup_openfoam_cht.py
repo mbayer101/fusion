@@ -16,7 +16,7 @@ c_wall_fci  = 0.0025
 dp_mhd_bare_MPa = (c_wall_bare * sigma_lbe * v_lbe * (B_tesla**2) * L_chan) / 1e6
 dp_mhd_fci_MPa  = (c_wall_fci  * sigma_lbe * v_lbe * (B_tesla**2) * L_chan) / 1e6
 
-Q_vol_m3_s = 1.25
+Q_vol_m3_s = 8.25
 P_pump_bare_MW = (dp_mhd_bare_MPa * 1e6 * Q_vol_m3_s) / (0.80 * 1e6)
 P_pump_fci_MW  = (dp_mhd_fci_MPa  * 1e6 * Q_vol_m3_s) / (0.80 * 1e6)
 
