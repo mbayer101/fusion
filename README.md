@@ -113,3 +113,15 @@ An integrated multi-physics simulation framework coupling **OpenMC** (3D Monte C
 
 - **Complete Engineering Report:** See [`docs/FFF_Hybrid_Reactor_Design_Report.md`](docs/FFF_Hybrid_Reactor_Design_Report.md) for the consolidated neutronics, 3D toroidal TBR (`1.1009`), 5-year equilibrium Pu skimming (`k_eff = 0.29248`), MHD (`97.1%` drag reduction), and 3D CHT thermal-hydraulic benchmark.
 - **3D Turbulent `chtMultiRegionSimpleFoam` (`kOmegaSST`):** Fluid LBE Mean/Max **`452.15 C` / `488.38 C`** | Solid Tungsten FW Max **`891.81 C`**.
+
+---
+
+## Visual Verification Gallery & Interactive Walkthrough (`v4.2.0`)
+
+- **Interactive Jupyter Notebook:** [`notebooks/FFF_Reactor_Overview.ipynb`](notebooks/FFF_Reactor_Overview.ipynb)
+- **Executive Technical Brief:** [`docs/FFF_Technical_Brief.md`](docs/FFF_Technical_Brief.md)
+- **Compiled PDF Technical Paper:** [`docs/FFF_Hybrid_Reactor_Technical_Paper.pdf`](docs/FFF_Hybrid_Reactor_Technical_Paper.pdf)
+
+| 3D Turbulent CHT (`k-ω SST`) | 5-Yr Online Pu Skimming (`65%/yr`) | Transient Plasma-Trip & ULOF Safety |
+| :---: | :---: | :---: |
+| ![3D CHT](docs/figures/fig1_3d_cht_thermal_profile.png) | ![Pu Skimming](docs/figures/fig2_actinide_skimming_keff.png) | ![ULOF Safety](docs/figures/fig3_transient_passive_safety.png) |
