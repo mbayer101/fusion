@@ -55,8 +55,9 @@ if chain_file:
 
     res = openmc.deplete.Results("depletion_results.h5")
     times_yr = res.get_times(time_units='a')
-    _, pu239_z1 = res.get_atoms("Fission_LBE_Zone1", "Pu239", nuc_units="atom/b-cm")
-    _, pu239_z3 = res.get_atoms("Fission_LBE_Zone3", "Pu239", nuc_units="atom/b-cm")
+    id_map = {m.name: str(m.id) for m in materials}
+    _, pu239_z1 = res.get_atoms(id_map["Fission_LBE_Zone1"], "Pu239", nuc_units="atom/b-cm")
+    _, pu239_z3 = res.get_atoms(id_map["Fission_LBE_Zone3"], "Pu239", nuc_units="atom/b-cm")
     os.chdir("../..")
 
     print("\n=== 5-YEAR STAGE 2 ACTINIDE TRANSMUTATION & Pu-239 BREEDING ===")
