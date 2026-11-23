@@ -1,0 +1,23 @@
+FoamFile
+{
+    version 2.0; format ascii; class dictionary; location "constant/fluid_lbe"; object fvOptions;
+}
+nuclearBlanketHeating
+{
+    type            scalarSemiImplicitSource;
+    active          true;
+    scalarSemiImplicitSourceCoeffs
+    {
+        selectionMode   all;
+        volumeMode      specific;
+        sources
+        {
+            h
+            {
+                // Equivalent to ~54 MW/m^3 volumetric nuclear heating -> dT ~ 145 C across 4m channel at 2.4 m/s
+                explicit    5350.0;
+                implicit    0.0;
+            }
+        }
+    }
+}
