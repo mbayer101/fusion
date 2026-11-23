@@ -72,7 +72,7 @@ op = openmc.deplete.CoupledOperator(model, chain_file=full_chain_path, normaliza
 
 # Online pyrochemical skimming rate: 65% of bred Pu extracted continuously per year
 skim_rate_s = 0.65 / (365.25 * 86400.0)
-transfer_rates = openmc.deplete.TransferRates(op, model, number_of_timesteps=5)
+transfer_rates = openmc.deplete.TransferRates(op, materials, number_of_timesteps=5)
 for z_name in shell_radii:
     for pu_iso in ["Pu239", "Pu240", "Pu241"]:
         transfer_rates.set_transfer_rate(z_name, [pu_iso], skim_rate_s)

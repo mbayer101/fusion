@@ -16,6 +16,6 @@ mixture
 {
     specie      { molWeight 183.84; }
     transport   { kappa 115.0; }
-    thermo      { Hf 0; Cp 134.0; }
+    thermodynamics  { Hf 0; Cp 134.0; }
     equationOfState { rho 19300.0; }
 }
