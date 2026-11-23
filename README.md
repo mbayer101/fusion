@@ -1,3 +1,31 @@
+# Fusion-Fission-Fusion (F-F-F) Hybrid Reactor Multi-Physics Pipeline (`v4.0.0`)
+
+[![Release](https://img.shields.io/badge/release-v4.0.0-blue)](https://github.com/mbayer101/fusion/releases)
+[![Technical Paper](https://img.shields.io/badge/PDF-Technical_Paper-red)](docs/FFF_Hybrid_Reactor_Technical_Paper.pdf)
+
+End-to-end simulation framework coupling **OpenMC (v0.15.3)** continuous-energy neutron transport & depletion with **OpenFOAM (v2412)** 3D turbulent conjugate heat transfer (`chtMultiRegionSimpleFoam`) and **$	ext{sCO}_2$ Brayton** power-cycle thermodynamics for a **500 MW D-T Fusion-Driven Subcritical Hybrid Reactor** ($M = 4.64\times$, $\text{TBR}_{3\text{D}} = 1.1009$, $k_{\text{eff}} = 0.24574 < 0.95$, $432.68\text{ MWe}$ net grid output).
+
+## Quickstart & Reproducibility
+
+```bash
+# 1. Clone repository
+git clone https://github.com/mbayer101/fusion.git && cd fusion
+
+# 2. Run 1D neutronics & eigenvalue subcriticality check
+python3 openmc/build_model.py
+python3 scripts/check_subcriticality.py
+
+# 3. Run 3D toroidal TBR recovery (TBR = 1.1009) & 5-year equilibrium Pu skimming
+python3 scripts/toroidal_tbr_recovery.py
+python3 scripts/full_actinide_skimming.py
+
+# 4. Run 3D OpenMC-to-OpenFOAM turbulent CHT solver & export ParaView VTKs
+source /usr/lib/openfoam/openfoam2412/etc/bashrc
+python3 scripts/run_3d_turbulent_cht.py
+```
+
+---
+
 # End-to-End Fusion-Fission-Fusion (F-F-F) Hybrid Reactor Simulation Pipeline
 
 An integrated multi-physics simulation framework coupling **OpenMC** (3D Monte Carlo neutron transport with MAGIC variance reduction) and **OpenFOAM** (Conjugate Heat Transfer & convective thermal-hydraulics) for a low-$Q$ D-T Tokamak driven subcritical fission and tritium breeding blanket.
