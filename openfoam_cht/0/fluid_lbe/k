@@ -1,0 +1,14 @@
+FoamFile
+{
+    version 2.0; format ascii; class volScalarField; location "0/fluid_lbe"; object k;
+}
+dimensions [0 2 -2 0 0 0 0];
+internalField uniform 0.02;
+boundaryField
+{
+    inlet       { type fixedValue; value uniform 0.02; }
+    outlet      { type zeroGradient; }
+    outer_wall  { type kqRWallFunction; value uniform 0.02; }
+    sides       { type symmetry; }
+    "fluid_lbe_to_.*" { type kqRWallFunction; value uniform 0.02; }
+}

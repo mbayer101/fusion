@@ -1,0 +1,59 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2412                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _b8cf4d35-20260127 OPENFOAM=2412 patch=260127 version=2412
+Arch   : "LSB;label=32;scalar=64"
+Exec   : foamToVTK -region fluid_lbe
+Date   : Nov 23 2026
+Time   : 14:18:56
+Host   : OpenMC
+PID    : 5711
+I/O    : uncollated
+Case   : /root/fusion-pipeline/openfoam_cht
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Initial memory 219044 kB
+Create mesh for time = 0
+
+VTK mesh topology: 0.04 s, 219684 kB
+Time: 0
+    volScalar    : T cellToRegion p p_rgh
+    volVector    : U
+    Internal  : "VTK/fluid_lbe/openfoam_cht_0/internal.vtu"
+    Boundary  : "VTK/fluid_lbe/openfoam_cht_0/boundary/outer_wall.vtp"
+    Boundary  : "VTK/fluid_lbe/openfoam_cht_0/boundary/inlet.vtp"
+    Boundary  : "VTK/fluid_lbe/openfoam_cht_0/boundary/outlet.vtp"
+    Boundary  : "VTK/fluid_lbe/openfoam_cht_0/boundary/sides.vtp"
+    Boundary  : "VTK/fluid_lbe/openfoam_cht_0/boundary/fluid_lbe_to_solid_fw.vtp"
+--> FOAM Warning : 
+    From Foam::compressible::turbulentTemperatureCoupledBaffleMixedFvPatchScalarField::turbulentTemperatureCoupledBaffleMixedFvPatchScalarField(const Foam::fvPatch&, const Foam::DimensionedField<double, Foam::volMesh>&, const Foam::dictionary&)
+    in file derivedFvPatchFields/turbulentTemperatureCoupledBaffleMixed/turbulentTemperatureCoupledBaffleMixedFvPatchScalarField.C at line 119
+    This BC has been superseded by compressible::turbulentTemperatureRadCoupledMixed which has more functionalities and it can handle the assemble coupled option for energy. 
+Wrote in 0.05 s, 222188 kB
+Time: 60
+    volScalar    : T p p_rgh rho
+    volVector    : U
+    Internal  : "VTK/fluid_lbe/openfoam_cht_60/internal.vtu"
+    Boundary  : "VTK/fluid_lbe/openfoam_cht_60/boundary/outer_wall.vtp"
+    Boundary  : "VTK/fluid_lbe/openfoam_cht_60/boundary/inlet.vtp"
+    Boundary  : "VTK/fluid_lbe/openfoam_cht_60/boundary/outlet.vtp"
+    Boundary  : "VTK/fluid_lbe/openfoam_cht_60/boundary/sides.vtp"
+    Boundary  : "VTK/fluid_lbe/openfoam_cht_60/boundary/fluid_lbe_to_solid_fw.vtp"
+--> FOAM Warning : 
+    From Foam::compressible::turbulentTemperatureCoupledBaffleMixedFvPatchScalarField::turbulentTemperatureCoupledBaffleMixedFvPatchScalarField(const Foam::fvPatch&, const Foam::DimensionedField<double, Foam::volMesh>&, const Foam::dictionary&)
+    in file derivedFvPatchFields/turbulentTemperatureCoupledBaffleMixed/turbulentTemperatureCoupledBaffleMixedFvPatchScalarField.C at line 119
+    This BC has been superseded by compressible::turbulentTemperatureRadCoupledMixed which has more functionalities and it can handle the assemble coupled option for energy. 
+Wrote in 0.05 s, 222188 kB
+
+End: 0.14 s, 281016 kB (peak)
+

@@ -14,8 +14,7 @@ nuclearBlanketHeating
         {
             h
             {
-                // Equivalent to ~54 MW/m^3 volumetric nuclear heating -> dT ~ 145 C across 4m channel at 2.4 m/s
-                explicit    5350.0;
+                explicit    3608.16;
                 implicit    0.0;
             }
         }

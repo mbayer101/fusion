@@ -1,0 +1,7 @@
+{
+  "file-series-version" : "1.0",
+  "files" : [
+    { "name" : "openfoam_cht_0.vtm", "time" : 0 },
+    { "name" : "openfoam_cht_60.vtm", "time" : 60 }
+  ]
+}

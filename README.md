@@ -78,3 +78,10 @@ An integrated multi-physics simulation framework coupling **OpenMC** (3D Monte C
   - **Verified 3D Toroidal TBR:** **`1.1009`** (`> 1.10` tritium self-sufficiency in full 3D toroidal geometry with equatorial NBI port) at **`M = 3.20x`** (`45.19 MeV/n`).
 - **Online Pyrochemical LBE Actinide Skimming (`65%/yr` Pu Extraction):**
   - **5-Year Equilibrium Blanket $k_{eff}$:** **`0.29248`** (peaks at `0.65165` at 2.0 FPY; strictly subcritical `< 0.95` across indefinite steady-state operation).
+
+---
+
+## Final Technical Design Report & 3D Turbulent CHT Verification (`v4.0.0`)
+
+- **Complete Engineering Report:** See [`docs/FFF_Hybrid_Reactor_Design_Report.md`](docs/FFF_Hybrid_Reactor_Design_Report.md) for the consolidated neutronics, 3D toroidal TBR (`1.1009`), 5-year equilibrium Pu skimming (`k_eff = 0.29248`), MHD (`97.1%` drag reduction), and 3D CHT thermal-hydraulic benchmark.
+- **3D Turbulent `chtMultiRegionSimpleFoam` (`kOmegaSST`):** Fluid LBE Mean/Max **`452.15 C` / `488.38 C`** | Solid Tungsten FW Max **`891.81 C`**.
