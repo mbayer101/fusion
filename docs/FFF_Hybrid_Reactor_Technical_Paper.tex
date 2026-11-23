@@ -79,6 +79,17 @@ Coupling the 3D OpenMC nuclear heating field ($3,608.2\text{ W/kg}$) into OpenFO
 \label{fig:depletion}
 \end{figure*}
 
+
+\section{Transient Passive Safety Analysis}
+Coupled subcritical point-kinetics and lumped-parameter transient simulations over $600\text{ s}$ confirm fail-safe shutdown behavior. Upon a $500\text{ MW}$ D-T plasma trip at $t = 0.5\text{ s}$, subcritical fission power ($k_{\text{eff}} = 0.24574$) collapses within milliseconds to fission-product decay heat ($\approx 95\text{ MW}_{\text{th}}$). Under an Unprotected Loss-of-Flow (ULOF) with simultaneous plasma trip and $15\text{ s}$ pump coastdown to $6\%$ natural circulation, peak LBE temperature reaches only $461.63^\circ\text{C}$ ($+188.37^\circ\text{C}$ below Eurofer97 creep) while Tungsten cools monotonically from $777.36^\circ\text{C}$.
+
+\begin{figure*}[t!]
+\centering
+\includegraphics[width=0.96\textwidth]{docs/figures/fig3_transient_passive_safety.png}
+\caption{Transient safety response following plasma trip and Unprotected Loss-of-Flow (ULOF): (a) subcritical power collapse to ANS-5.1 decay heat and (b) 10-minute Tungsten first-wall and LBE coolant thermal trajectories under natural convection.}
+\label{fig:transient}
+\end{figure*}
+
 \section{Conclusion}
 The validated F-F-F hybrid architecture demonstrates that a driven $Q_{\text{plasma}} = 2.0$ tokamak coupled to a graded U-LBE/FliBe blanket achieves $>430\text{ MW}_{\text{e}}$ net commercial output, full 3D tritium self-sufficiency ($\mathrm{TBR} = 1.1009$), passive subcritical safety ($k_{\text{eff}} < 0.66$), and thermally compliant 3D turbulent heat removal. All simulation scripts, CAD/DAGMC models, and ParaView VTK datasets are archived at \url{https://github.com/mbayer101/fusion}.
 
